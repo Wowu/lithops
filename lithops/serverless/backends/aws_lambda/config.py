@@ -79,10 +79,6 @@ def load_config(config_data):
                        "maximum amount".format(RUNTIME_TIMEOUT_MAX, config_data['aws_lambda']['runtime_timeout']))
         config_data['aws_lambda']['runtime_timeout'] = RUNTIME_TIMEOUT_MAX
 
-    # Auth, role and region config
-    if not {'access_key_id', 'secret_access_key'}.issubset(set(config_data['aws'])):
-        raise Exception("'access_key_id' and 'secret_access_key' are mandatory under 'aws' section")
-
     if 'account_id' not in config_data['aws']:
         config_data['aws']['account_id'] = None
 

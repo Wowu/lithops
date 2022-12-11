@@ -15,7 +15,7 @@
 #
 
 
-REQ_PARAMS = ('secret_access_key', 'access_key_id')
+REQ_PARAMS = ()
 ENDPOINT_URL = 'https://s3.{}.amazonaws.com'
 
 

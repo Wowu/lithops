@@ -109,10 +109,6 @@ def load_config(config_data):
         if 'instance_role' not in config_data['aws_batch']:
             raise Exception("'instance_role' mandatory for EC2 or SPOT environments")
 
-    # Auth, role and region config
-    if not {'access_key_id', 'secret_access_key'}.issubset(set(config_data['aws'])):
-        raise Exception("'access_key_id' and 'secret_access_key' are mandatory under 'aws' section")
-
     if 'account_id' not in config_data['aws']:
         config_data['aws']['account_id'] = None
 

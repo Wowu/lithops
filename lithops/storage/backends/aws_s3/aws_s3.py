@@ -49,8 +49,8 @@ class S3Backend:
         )
 
         self.s3_client = boto3.client(
-            's3', aws_access_key_id=s3_config['access_key_id'],
-            aws_secret_access_key=s3_config['secret_access_key'],
+            's3', aws_access_key_id=s3_config.get('access_key_id', None),
+            aws_secret_access_key=s3_config.get('secret_access_key', None),
             config=client_config,
             endpoint_url=self.service_endpoint
         )

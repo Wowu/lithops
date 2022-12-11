@@ -63,8 +63,8 @@ class AWSEC2Backend:
         )
 
         self.ec2_client = boto3.client(
-            'ec2', aws_access_key_id=ec2_config['access_key_id'],
-            aws_secret_access_key=ec2_config['secret_access_key'],
+            'ec2', aws_access_key_id=ec2_config.get('access_key_id', None),
+            aws_secret_access_key=ec2_config.get('secret_access_key', None),
             config=client_config,
             region_name=self.region
         )

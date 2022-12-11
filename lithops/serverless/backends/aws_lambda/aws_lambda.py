@@ -57,7 +57,7 @@ class AWSLambdaBackend:
         self.internal_storage = internal_storage
         self.user_agent = lambda_config['user_agent']
 
-        self.user_key = lambda_config['access_key_id'][-4:].lower()
+        self.user_key = lambda_config.get('access_key_id', 'test')[-4:].lower()
         self.package = f'lithops_v{__version__.replace(".", "-")}_{self.user_key}'
         self.region_name = lambda_config['region_name']
         self.role_arn = lambda_config['execution_role']
@@ -65,8 +65,8 @@ class AWSLambdaBackend:
         logger.debug('Creating Boto3 AWS Session and Lambda Client')
 
         self.aws_session = boto3.Session(
-            aws_access_key_id=lambda_config['access_key_id'],
-            aws_secret_access_key=lambda_config['secret_access_key'],
+            aws_access_key_id=lambda_config.get('access_key_id', None),
+            aws_secret_access_key=lambda_config.get('secret_access_key', None),
             region_name=self.region_name
         )
 

@@ -38,9 +38,6 @@ def load_config(config_data):
     if 'aws' not in config_data:
         raise Exception("'aws' section are mandatory in the configuration")
 
-    if not {'access_key_id', 'secret_access_key'}.issubset(set(config_data['aws'])):
-        raise Exception("'access_key_id' and 'secret_access_key' are mandatory under 'aws' section")
-
     if 'exec_mode' not in config_data['standalone'] \
        or config_data['standalone']['exec_mode'] == 'consume':
         params_to_check = REQ_PARAMS_1
